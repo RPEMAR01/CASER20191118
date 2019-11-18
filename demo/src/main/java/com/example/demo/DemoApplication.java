@@ -21,7 +21,8 @@ public class DemoApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		System.out.println("Hola mundo");
 		
-		dao.findAll().forEach(item -> System.out.println(item));
+		//dao.findAll().forEach(item -> System.out.println(item));
+		dao.findTop10ByFirstNameStartingWith("KI").forEach(item -> System.out.println(item.getFilmActors()));
 	}
 
 }
