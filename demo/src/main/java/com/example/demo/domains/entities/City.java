@@ -13,6 +13,11 @@ import java.util.List;
 @Entity
 @NamedQuery(name="City.findAll", query="SELECT c FROM City c")
 public class City implements Serializable {
+	@Override
+	public String toString() {
+		return "City [cityId=" + cityId + ", city=" + city + "]";
+	}
+
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -35,6 +40,16 @@ public class City implements Serializable {
 	private Country country;
 
 	public City() {
+	}
+
+	public City(int cityId) {
+		this.cityId = cityId;
+	}
+
+	public City(int cityId, String city, Country country) {
+		this.cityId = cityId;
+		this.city = city;
+		this.country = country;
 	}
 
 	public int getCityId() {
