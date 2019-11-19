@@ -5,6 +5,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.example.demo.domains.services.ActorService;
 import com.example.demo.infraestructure.repositories.ActorRepository;
 
 @SpringBootApplication
@@ -16,13 +17,16 @@ public class DemoApplication implements CommandLineRunner {
 
 	@Autowired
 	ActorRepository dao;
+	@Autowired
+	ActorService srv;
 	
 	@Override
 	public void run(String... args) throws Exception {
 		System.out.println("Hola mundo");
 		
 		//dao.findAll().forEach(item -> System.out.println(item));
-		dao.findTop10ByFirstNameStartingWith("KI").forEach(item -> System.out.println(item.getFilmActors()));
+		//dao.findTop10ByFirstNameStartingWith("KI").forEach(item -> System.out.println(item.getFilmActors()));
+		srv.getAll().forEach(item -> System.out.println(item));
 	}
 
 }
