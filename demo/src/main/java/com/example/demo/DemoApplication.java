@@ -7,8 +7,10 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.example.demo.application.dtos.ActorEditDTO;
 import com.example.demo.application.dtos.CityEdit;
 import com.example.demo.domains.entities.Actor;
+import com.example.demo.domains.entities.projections.ActorShort;
 import com.example.demo.domains.services.ActorService;
 import com.example.demo.exception.NotFoundException;
 import com.example.demo.infraestructure.repositories.ActorRepository;
@@ -54,10 +56,13 @@ public class DemoApplication implements CommandLineRunner {
 //		citys.findAll().stream()
 //			.map(item -> CityEdit.from(item))
 //			.forEach(item -> System.out.println(item));
-		CityEdit req = new CityEdit(0, "Almeria", 87);
-		citys.save(CityEdit.from(req));
-		citys.findAll().stream()
-			.forEach(item -> System.out.println(item));
+//		CityEdit req = new CityEdit(0, "Almeria", 87);
+//		citys.save(CityEdit.from(req));
+//		citys.findAll().stream()
+//			.forEach(item -> System.out.println(item));
+		dao.findByActorIdIsNotNull(ActorShort.class)
+			.forEach(item -> System.out.println(item.getName()));
+
 	}
 
 }

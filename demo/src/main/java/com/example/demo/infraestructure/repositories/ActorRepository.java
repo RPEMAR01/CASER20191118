@@ -8,4 +8,6 @@ import com.example.demo.domains.entities.Actor;
 
 public interface ActorRepository extends JpaRepository<Actor, Integer> {
 	List<Actor> findTop10ByFirstNameStartingWith(String prefijo);
+	
+	<T> List<T> findByActorIdIsNotNull(Class<T> type);
 }
